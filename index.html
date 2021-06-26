@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>CTF</title>
+
+<style>
+body {
+  background-image: url('img.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;  
+  background-size: cover;
+}
+</style>
+
+</head>
+
+<body>
+
+<center><h1>4n6 Demo CTF</h1></center>
+
+<h2>Enter Details</h2>
+
+<form action="/action_page.php">
+  <label for="fname">First name:</label><br>
+  <input type="text" id="fname" name="fname" value=""><br>
+  <label for="lname">Last name:</label><br>
+  <input type="text" id="lname" name="lname" value=""><br><br>
+  
+</form> 
+
+
+<h2>Instructions</h2>
+<p>1. Get Volatility from https://www.volatilityfoundation.org/ and extract it in a Folder.</p>
+
+<p>2. Get CTF Image(cridex.vmem) from https://github.com/volatilityfoundation/volatility/wiki/Memory-Samples
+</p>
+
+<h2>Tasks</h2>
+
+
+<p>
+
+<form name="quiz">
+
+<p>
+
+<b>Task 1 - 
+
+<br>You are working for CSIRT and SOC Security Analyst want to know file correcting to with Process ID(PID) 1640. What is the answer to get this Flag/file name?<br></b>
+
+<blockquote>
+
+<input type="radio" name="q1" value="reader_s3.exe">reader_s3.exe<br>
+
+<input type="radio" name="q1" value="p21.exe">p21.exe<br>
+
+<input type="radio" name="q1" value="reader_s1.exe">reader_s1.exe<br>
+
+<input type="radio" name="q1" value="ctf.exe">ctf.exe<br>
+
+</blockquote>
+
+<p><b>
+
+<hr>
+
+Task 2 - 
+
+<br>To compare the Packet Size, he asked you to find the size of the file. What is the answer to this Flag/size?<br></b>
+
+<blockquote>
+
+<input type="radio" name="q2" value="5.0 Kb">5.0 Kb<br>
+
+<input type="radio" name="q2" value="22.3 Kb">22.3 Kb<br>
+
+<input type="radio" name="q2" value="37.2 Kb">37.2 Kb<br>
+
+<input type="radio" name="q2" value="28.5 Kb">28.5 Kb<br>
+
+
+</blockquote>
+
+<p><b>
+
+<hr>
+
+<input type="button"value="Submit"onClick="getScore(this.form);">
+
+<input type="reset" value="Clear"><p>
+
+Number of score out of 2 = <input type= text size 2 name= "mark">
+
+Score in percentage = <input type=text size=2 name="percentage"><br>
+
+</form>
+
+<p>
+
+<form method="post" name="Form" onsubmit="" action="">
+
+</form>
+
+</body>
+
+<script>
+
+var numQues = 2;
+
+var numChoi = 4;
+
+var answers = new Array(2);
+
+answers[0] = "reader_s1.exe";
+
+answers[1] = "28.5 Kb";
+
+function getScore(form) {
+
+var score = 0;
+
+var currElt;
+
+var currSelection;
+
+for (i=0; i<numQues; i++) {
+
+currElt = i*numChoi;
+
+answered=false;
+
+for (j=0; j<numChoi; j++) {
+
+currSelection = form.elements[currElt + j];
+
+if (currSelection.checked) {
+
+answered=true;
+
+if (currSelection.value == answers[i]) {
+
+score++;
+
+break;
+
+}
+
+}
+
+}
+
+if (answered ===false){alert("Do answer all the questions, Please") ;return false;}
+
+}
+
+var scoreper = Math.round(score/numQues*100);
+
+form.percentage.value = scoreper + "%";
+
+form.mark.value=score;
+
+}
+
+</script>
+
+</html>
